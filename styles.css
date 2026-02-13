@@ -1,0 +1,162 @@
+:root {
+  --bg: #000;
+  --card: #232323;
+  --card-active: rgba(250, 204, 21, 0.15);
+  --yellow: #facc15;
+  --text: #f5f5f5;
+  --muted: #a1a1aa;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.panel {
+  width: min(940px, 100%);
+  background: #121212;
+  border: 1px solid rgba(250, 204, 21, 0.35);
+  border-radius: 24px;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.5);
+  padding: 28px;
+}
+
+.head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+.logo-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  background: #1a1a1a;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.logo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.logo-full { object-fit: contain !important; padding: 6px; }
+.hidden { display: none !important; }
+.logo-fallback { display: none; color: var(--yellow); font-weight: 700; font-size: .75rem; }
+.head h1 { margin: 0; font-size: 1.45rem; color: var(--yellow); }
+.head p { margin: 4px 0 0; color: var(--muted); font-size: .93rem; }
+
+.package-list { display: grid; gap: 10px; }
+
+.pkg {
+  background: var(--card);
+  border: 1px solid #3f3f46;
+  border-radius: 14px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.left-content { min-width: 0; }
+.pkg-title { font-weight: 600; }
+.pkg-desc { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+.file-name {
+  color: #d4d4d8;
+  font-size: .78rem;
+  margin-top: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 460px;
+}
+
+.right-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.right-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.right-tools.hidden { display: none; }
+
+.pill {
+  background: #facc15;
+  color: #171717;
+  border: 1px solid #f4d447;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: .78rem;
+  font-weight: 700;
+}
+
+.file-btn { cursor: pointer; }
+
+.check {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1px solid #71717a;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+}
+
+.pkg:hover { border-color: rgba(250, 204, 21, 0.45); }
+
+.pkg.editable {
+  border-color: rgba(250, 204, 21, 0.85);
+  background: rgba(250, 204, 21, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(250, 204, 21, 0.25);
+}
+
+.pkg.editable .pkg-desc {
+  color: #c7c7cc;
+}
+
+.pkg.active { border-color: var(--yellow); background: var(--card-active); }
+.pkg.active .check { background: var(--yellow); border-color: var(--yellow); color: #111; }
+
+.actions { margin-top: 16px; display: flex; gap: 10px; }
+button { border: 0; border-radius: 8px; padding: 11px 14px; font-weight: 600; cursor: pointer; }
+button:disabled { opacity: .6; cursor: not-allowed; }
+.ghost { background: #27272a; color: #e4e4e7; }
+.small { margin-left: auto; padding: 9px 12px; }
+.primary { flex: 1; background: var(--yellow); color: #111; }
+
+.progress-area { margin-top: 14px; }
+.bar { width: 100%; height: 9px; border-radius: 999px; overflow: hidden; background: #27272a; }
+#barFill { height: 100%; width: 0%; transition: width .12s linear; background: var(--yellow); }
+#statusLine { margin: 10px 0 0; color: var(--muted); font-size: .92rem; }
+
+.terminal { margin-top: 14px; border: 1px solid #3f3f46; border-radius: 12px; background: #0b0b0c; }
+.terminal h2 { margin: 0; padding: 10px 12px; border-bottom: 1px solid #27272a; font-size: .92rem; color: #d4d4d8; }
+#logs {
+  margin: 0;
+  min-height: 120px;
+  max-height: 220px;
+  overflow: auto;
+  padding: 12px;
+  color: #facc15;
+  font-family: Consolas, monospace;
+  font-size: .84rem;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 840px) {
+  .pkg { flex-direction: column; align-items: flex-start; }
+  .right-content { width: 100%; justify-content: space-between; }
+  .file-name { max-width: 100%; }
+}

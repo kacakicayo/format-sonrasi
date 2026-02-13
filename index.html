@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIMNET Kurulum Yöneticisi</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="panel">
+        <header class="head">
+          <div class="logo-wrap">
+            <img src="assets/logo.png" alt="TIMNET logo" id="logo" />
+            <img src="assets/logo-full.png" alt="TIMNET tam logo" id="logoFull" class="logo-full hidden" />
+            <div class="logo-fallback" id="logoFallback">Logo</div>
+          </div>
+          <div>
+            <h1>Format Sonrası Kurulum Yöneticisi</h1>
+            <p>Temel programları seç, dosyaları eşleştir ve tek seferde kur.</p>
+          </div>
+          <button id="editBtn" class="ghost small">Düzenle</button>
+        </header>
+
+        <section class="package-list" id="packageList" aria-label="Paket listesi"></section>
+
+        <footer class="actions">
+          <button id="selectAll" class="ghost">Tümünü Seç</button>
+          <button id="installBtn" class="primary">Seçilenleri Kur</button>
+        </footer>
+
+        <section class="progress-area">
+          <div class="bar"><div id="barFill"></div></div>
+          <p id="statusLine">Durum: Hazır</p>
+        </section>
+
+        <section class="terminal">
+          <h2>Terminal</h2>
+          <pre id="logs"></pre>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
